@@ -73,7 +73,7 @@ SIZE=9
 python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
         --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/labyrinth/$SIZE/train/ \
-        --test_scenario_dir scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
+        --test_scenario_dir 3dcdrl/scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
 ```
 
@@ -98,7 +98,7 @@ SIZE=9
 python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
          --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/find_return/$SIZE/train/ \
-        --test_scenario_dir scenarios/custom_scenarios/find_return/$SIZE/test/ \
+        --test_scenario_dir 3dcdrl/scenarios/custom_scenarios/find_return/$SIZE/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
 ```
 
@@ -123,7 +123,7 @@ NUM_ITEMS=4
 python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
         --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/kitem/$NUM_ITEMS/train/ \
-        --test_scenario_dir scenarios/custom_scenarios/kitem/$NUM_ITEMS/test/ \
+        --test_scenario_dir 3dcdrl/scenarios/custom_scenarios/kitem/$NUM_ITEMS/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
 ```
 
@@ -149,7 +149,7 @@ DIFFICULTY=3
 python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
         --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/two_color/$DIFFICULTY/train/ \
-        --test_scenario_dir scenarios/custom_scenarios/two_color/$DIFFICULTY/test/ \
+        --test_scenario_dir 3dcdrl/scenarios/custom_scenarios/two_color/$DIFFICULTY/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
 ```
 
