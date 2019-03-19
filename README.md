@@ -63,7 +63,7 @@ SIZE=9
 python 3dcdrl/create_rollout_videos.py --limit_actions \
        --scenario_dir  3dcdrl/scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
-       saved_models/labyrinth_$SIZE\_checkpoint_0198658048.pth.tar \
+       3dcdrl/saved_models/labyrinth_$SIZE\_checkpoint_0198658048.pth.tar \
        --multimaze --num_mazes_test 64
 ```
 
@@ -89,7 +89,7 @@ SIZE=9
 python 3dcdrl/create_rollout_videos.py --limit_actions \
        --scenario_dir  3dcdrl/scenarios/custom_scenarios/find_return/$SIZE/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
-       saved_models/find_return_$SIZE\_checkpoint_0198658048.pth.tar \
+       3dcdrl/saved_models/find_return_$SIZE\_checkpoint_0198658048.pth.tar \
        --multimaze --num_mazes_test 64
 ```
 Training:
@@ -114,7 +114,7 @@ NUM_ITEMS=4
 python 3dcdrl/create_rollout_videos.py --limit_actions \
        --scenario_dir  3dcdrl/scenarios/custom_scenarios/kitem/$NUM_ITEM/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
-       saved_models/$NUM_ITEMS\item_checkpoint_0198658048.pth.tar \
+       3dcdrl/saved_models/$NUM_ITEMS\item_checkpoint_0198658048.pth.tar \
        --multimaze --num_mazes_test 64
 ```
 Training:
@@ -139,7 +139,7 @@ DIFFICULTY=3
 python 3dcdrl/create_rollout_videos.py --limit_actions \
        --scenario_dir  3dcdrl/scenarios/custom_scenarios/two_color/$DIFFICULTY/$DIFFICULTY/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
-       saved_models/two_col_p$DIFFICULTY\_checkpoint_0198658048.pth.tar \
+       3dcdrl/saved_models/two_col_p$DIFFICULTY\_checkpoint_0198658048.pth.tar \
        --multimaze --num_mazes_test 64
 ```
 Training:
