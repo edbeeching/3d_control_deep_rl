@@ -60,7 +60,7 @@ The evaluation code will output example rollouts for all 64 test scenarios.
 Evaluation:
 ```
 SIZE=9
-python 3dcdrl/create_rollout_videos.py --recurrent_policy --num_stack 1 --limit_actions \
+python 3dcdrl/create_rollout_videos.py --limit_actions \
        --scenario_dir  scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
        saved_models/labyrinth_$SIZE\_checkpoint_0198658048.pth.tar \
@@ -71,7 +71,7 @@ Training:
 ```
 SIZE=9
 python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \ 
-        --recurrent_policy --num_stack 1 --limit_actions \
+        --limit_actions \
         --scenario_dir scenarios/custom_scenarios/labyrinth/$SIZE/train/ \
         --test_scenario_dir scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
@@ -86,7 +86,7 @@ python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
 Evaluation:
 ```
 SIZE=9
-python 3dcdrl/create_rollout_videos.py --recurrent_policy --num_stack 1 --limit_actions \
+python 3dcdrl/create_rollout_videos.py --limit_actions \
        --scenario_dir  scenarios/custom_scenarios/find_return/$SIZE/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
        saved_models/find_return_$SIZE\_checkpoint_0198658048.pth.tar \
@@ -96,7 +96,7 @@ Training:
 ```
 SIZE=9
 python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
-        --recurrent_policy --num_stack 1 --limit_actions \
+         --limit_actions \
         --scenario_dir scenarios/custom_scenarios/find_return/$SIZE/train/ \
         --test_scenario_dir scenarios/custom_scenarios/find_return/$SIZE/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
@@ -111,7 +111,7 @@ python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
 Evaluation:
 ```
 NUM_ITEMS=4
-python 3dcdrl/create_rollout_videos.py --recurrent_policy --num_stack 1 --limit_actions \
+python 3dcdrl/create_rollout_videos.py --limit_actions \
        --scenario_dir  scenarios/custom_scenarios/kitem/$NUM_ITEM/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
        saved_models/$NUM_ITEMS\item_checkpoint_0198658048.pth.tar \
@@ -121,7 +121,7 @@ Training:
 ```
 NUM_ITEMS=4
 python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
-        --recurrent_policy --num_stack 1 --limit_actions \
+        --limit_actions \
         --scenario_dir scenarios/custom_scenarios/kitem/$NUM_ITEMS/train/ \
         --test_scenario_dir scenarios/custom_scenarios/kitem/$NUM_ITEMS/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
@@ -136,7 +136,7 @@ python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
 Evaluation:
 ```
 DIFFICULTY=3
-python 3dcdrl/create_rollout_videos.py --recurrent_policy --num_stack 1 --limit_actions \
+python 3dcdrl/create_rollout_videos.py --limit_actions \
        --scenario_dir  scenarios/custom_scenarios/two_color/$DIFFICULTY/$DIFFICULTY/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
        saved_models/two_col_p$DIFFICULTY\_checkpoint_0198658048.pth.tar \
@@ -147,7 +147,7 @@ Training:
 ```
 DIFFICULTY=3
 python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
-        --recurrent_policy --num_stack 1 --limit_actions \
+        --limit_actions \
         --scenario_dir scenarios/custom_scenarios/two_color/$DIFFICULTY/train/ \
         --test_scenario_dir scenarios/custom_scenarios/two_color/$DIFFICULTY/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
