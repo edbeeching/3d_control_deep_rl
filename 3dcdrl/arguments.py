@@ -7,7 +7,7 @@ Created on Fri Jan 25 09:55:58 2019
 """
 
 import argparse
-def parse_game_args():
+def parse_a2c_args():
     """ Defines the arguments used for both training and testing the network"""
     
     parser = argparse.ArgumentParser(description='Parameters')
@@ -23,7 +23,7 @@ def parse_game_args():
     paa('--screen_width',       default=112,                       help='Width of the screen',  type=int)
     paa('--num_environments',   default=16,                        help='the number of parallel enviroments',  type=int)
     paa('--limit_actions',      default=False,                     help='limited the size of the action space to F, L, R, F+L, F+R', action='store_true')
-    paa('--scenario_dir',       default='../resources/scenarios/', help='location of game scenarios',  type=str)    
+    paa('--scenario_dir',       default='../scenarios/',           help='location of scenarios',  type=str)    
     paa('--test_scenario_dir',  default='',                        help='location of game scenarios',  type=str)    
     paa('--show_window',        default=False,                     help='Show the game window',  type=bool)
     paa('--resize',             default=True,                      help='Use resize for decimation rather ran downsample',  type=bool)
@@ -39,13 +39,12 @@ def parse_game_args():
     # =========================================================================
     #               Model Parameters
     # =========================================================================
-    paa('--hidden_size',        default=128,    help='LSTM / GRU hidden size', type=int) 
+    paa('--hidden_size',        default=128,    help='GRU hidden size', type=int) 
     paa('--reload_model',       default='',     help='directory and iter of model to load dir,iter', type=str)
     paa('--model_checkpoint',   default='',     help='the name of a specific model to evaluate, used when making videos', type=str)
     paa('--conv1_size',         default=16,     help='Number of filters in conv layer 1', type=int)
     paa('--conv2_size',         default=32,     help='Number of filters in conv layer 2', type=int)
     paa('--conv3_size',         default=16,     help='Number of filters in conv layer 3', type=int)
-    paa('--layer_norm',         default=False,  help='whether to use layer norm', action='store_true')
    
     # =========================================================================
     #               Training Parameters 
@@ -98,7 +97,7 @@ def parse_game_args():
           
     
 if __name__ == '__main__':
-    params = parse_game_args()
+    params = parse_a2c_args()
     print(params)
     print(params.action_size)
     import os

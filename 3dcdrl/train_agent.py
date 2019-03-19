@@ -9,7 +9,7 @@ import time, logging
 
 import torch
 
-from arguments import parse_game_args
+from arguments import parse_a2c_args
 from multi_env import MultiEnv
 from models import CNNPolicy
 from a2c_agent import A2CAgent
@@ -17,7 +17,7 @@ from utils import initialize_logging
 
 
 def train():
-    args = parse_game_args()
+    args = parse_a2c_args()
     output_dir = initialize_logging(args)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
@@ -30,7 +30,17 @@ def train():
     
     # The agent's policy network and training algorithm A2C
     policy = CNNPolicy(obs_shape, args).to(device)
-    agent = A2CAgent(policy, args.hidden_size)
+    agent = A2CAgent(policy, 
+                     args.hidden_size,
+                     value_weight=args.value_weight, 
+                     entropy_weight=args.entropy_weight, 
+                     num_steps=args.num_steps, 
+                     num_parallel=args.num_parallel,
+                     gamma=args.gamma,
+                     lr=args.lr,
+                     opt_alpha=args.opt_alpha,
+                     opt_momentum=args.opt_momentum,
+                     max_grad_norm=args.max_grad_norm)
     
     start_j = 0
     if args.reload_model:
@@ -76,15 +86,4 @@ def train():
 if __name__ == '__main__':
     train()
     
-        
        
-        
-        
-    
-        
-        
-        
-        
-        
-        
-        

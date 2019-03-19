@@ -13,10 +13,7 @@ from torch import nn
 
 from torch.distributions import Categorical
 import torch.nn.functional as F
-from recurrent_cells import MyGruCell, MyLayerNormGruCell
-
-from arguments import parse_game_args
-
+from arguments import parse_a2c_args
 
 class Lin_View(nn.Module):
 	def __init__(self):
@@ -43,11 +40,7 @@ class CNNPolicy(nn.Module):
         self.hidden_size = args.hidden_size
 
         self.linear1 = nn.Linear(self.conv_out_size, self.hidden_size)
-        #self.gru = nn.GRUCell(self.hidden_size, self.hidden_size)
-        if args.layer_norm:
-            self.gru = MyGruCell(self.hidden_size, self.hidden_size)
-        else:
-            self.gru = MyLayerNormGruCell(self.hidden_size, self.hidden_size)
+        self.gru = nn.GRUCell(self.hidden_size, self.hidden_size)
         
 
         self.critic_linear = nn.Linear(self.hidden_size, 1)
@@ -70,7 +63,7 @@ class CNNPolicy(nn.Module):
         x = x.view(-1, self.conv_out_size)
         x = self.linear1(x)
         x = F.relu(x)          
-        x = new_states = self.gru(x, states*masks.clone()) # clone required due to inplace operatation. TODO: investigate this
+        x = new_states = self.gru(x, states*masks.clone())
         
         values = self.critic_linear(x)
         log_probs = F.log_softmax(self.dist_linear(x), dim=1)
@@ -98,22 +91,19 @@ class CNNPolicy(nn.Module):
         if type(layer) == nn.Conv2d or type(layer) == nn.Linear:
             nn.init.orthogonal_(layer.weight.data, gain=1)
             layer.bias.data.fill_(0)
-            # print('Initializing  {} layer of size: {}'.format(type(layer), layer.weight.size()))
         elif type(layer) == nn.GRUCell:
             nn.init.orthogonal_(layer.weight_ih, gain=1)
             nn.init.orthogonal_(layer.weight_hh, gain=1)
             layer.bias_ih.data.fill_(0)
             layer.bias_hh.data.fill_(0)
-            #print('Initializing  recurrent layer') 
         else:
             pass
-            #print('layer of type {}  was not initialized'.format(type(layer)))
     
     
     
 if __name__ == '__main__':
     
-    args = parse_game_args()
+    args = parse_a2c_args()
     args.num_actions = 5
     shape = (3,64,112)
     model = CNNPolicy(shape, args)

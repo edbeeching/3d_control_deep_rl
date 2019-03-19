@@ -10,7 +10,7 @@ from itertools import islice
 from collections import deque
 import multiprocessing as mp
 import numpy as np
-from arguments import parse_game_args        
+from arguments import parse_a2c_args        
 from doom_environment import DoomEnvironment
 
 
@@ -151,8 +151,8 @@ class MultiEnv(object):
 
 if __name__ == '__main__':
     
-    args = parse_game_args()
-    args.scenario_dir = '../resources/scenarios/'
+    args = parse_a2c_args()
+    args.scenario_dir = '../scenarios/'
     
 
     mp_test_envs = MultiEnv(args.simulator, args.num_environments, 1, args)
