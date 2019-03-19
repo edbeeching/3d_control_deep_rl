@@ -30,7 +30,7 @@ This repository includes:
 3. Assuming you are using a venv, activate it and install packages listed in requirements.txt
 4. Test the installation with the following command, this should train an agent 100,000 frames in the basic health gathering scenario:
 ```
-    python  3dcdrl/train_a2c.py  --num_frames 100000
+    python  3dcdrl/train_agent.py  --num_frames 100000
 ```
 Note if you want to train this agent to convergence it takes between 5-10M frames.
 
@@ -70,7 +70,7 @@ python 3dcdrl/create_rollout_videos.py --limit_actions \
 Training:
 ```
 SIZE=9
-python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \ 
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \ 
         --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/labyrinth/$SIZE/train/ \
         --test_scenario_dir scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
@@ -95,7 +95,7 @@ python 3dcdrl/create_rollout_videos.py --limit_actions \
 Training:
 ```
 SIZE=9
-python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
          --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/find_return/$SIZE/train/ \
         --test_scenario_dir scenarios/custom_scenarios/find_return/$SIZE/test/ \
@@ -120,7 +120,7 @@ python 3dcdrl/create_rollout_videos.py --limit_actions \
 Training:
 ```
 NUM_ITEMS=4
-python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
         --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/kitem/$NUM_ITEMS/train/ \
         --test_scenario_dir scenarios/custom_scenarios/kitem/$NUM_ITEMS/test/ \
@@ -146,7 +146,7 @@ Training:
 
 ```
 DIFFICULTY=3
-python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
         --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/two_color/$DIFFICULTY/train/ \
         --test_scenario_dir scenarios/custom_scenarios/two_color/$DIFFICULTY/test/ \
