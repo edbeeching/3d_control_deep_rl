@@ -70,7 +70,7 @@ python 3dcdrl/create_rollout_videos.py --limit_actions \
 Training:
 ```
 SIZE=9
-python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \ 
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
         --limit_actions \
         --scenario_dir 3dcdrl/scenarios/custom_scenarios/labyrinth/$SIZE/train/ \
         --test_scenario_dir scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
