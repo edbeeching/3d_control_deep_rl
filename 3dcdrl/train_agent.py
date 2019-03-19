@@ -32,14 +32,14 @@ def train():
     policy = CNNPolicy(obs_shape, args).to(device)
     agent = A2CAgent(policy, 
                      args.hidden_size,
-                     value_weight=args.value_weight, 
-                     entropy_weight=args.entropy_weight, 
+                     value_weight=args.value_loss_coef, 
+                     entropy_weight=args.entropy_coef, 
                      num_steps=args.num_steps, 
-                     num_parallel=args.num_parallel,
+                     num_parallel=args.num_environments,
                      gamma=args.gamma,
-                     lr=args.lr,
-                     opt_alpha=args.opt_alpha,
-                     opt_momentum=args.opt_momentum,
+                     lr=args.learning_rate,
+                     opt_alpha=args.alpha,
+                     opt_momentum=args.momentum,
                      max_grad_norm=args.max_grad_norm)
     
     start_j = 0
