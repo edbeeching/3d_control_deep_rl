@@ -30,7 +30,7 @@ This repository includes:
 3. Assuming you are using a venv, activate it and install packages listed in requirements.txt
 4. Test the installation with the following command, this should train an agent 100,000 frames in the basic health gathering scenario:
 ```
-    python  3dcdrl/train_a2c.py  --num_frames 100000
+    python  3dcdrl/train_agent.py  --num_frames 100000
 ```
 Note if you want to train this agent to convergence it takes between 5-10M frames.
 
@@ -60,20 +60,20 @@ The evaluation code will output example rollouts for all 64 test scenarios.
 Evaluation:
 ```
 SIZE=9
-python 3dcdrl/create_rollout_videos.py --recurrent_policy --num_stack 1 --limit_actions \
-       --scenario_dir  scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
+python 3dcdrl/create_rollout_videos.py --limit_actions \
+       --scenario_dir  3dcdrl/scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
-       saved_models/labyrinth_$SIZE\_checkpoint_0198658048.pth.tar \
+       3dcdrl/saved_models/labyrinth_$SIZE\_checkpoint_0198658048.pth.tar \
        --multimaze --num_mazes_test 64
 ```
 
 Training:
 ```
 SIZE=9
-python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \ 
-        --recurrent_policy --num_stack 1 --limit_actions \
-        --scenario_dir scenarios/custom_scenarios/labyrinth/$SIZE/train/ \
-        --test_scenario_dir scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
+        --limit_actions \
+        --scenario_dir 3dcdrl/scenarios/custom_scenarios/labyrinth/$SIZE/train/ \
+        --test_scenario_dir 3dcdrl/scenarios/custom_scenarios/labyrinth/$SIZE/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
 ```
 
@@ -86,19 +86,19 @@ python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
 Evaluation:
 ```
 SIZE=9
-python 3dcdrl/create_rollout_videos.py --recurrent_policy --num_stack 1 --limit_actions \
-       --scenario_dir  scenarios/custom_scenarios/find_return/$SIZE/test/ \
+python 3dcdrl/create_rollout_videos.py --limit_actions \
+       --scenario_dir  3dcdrl/scenarios/custom_scenarios/find_return/$SIZE/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
-       saved_models/find_return_$SIZE\_checkpoint_0198658048.pth.tar \
+       3dcdrl/saved_models/find_return_$SIZE\_checkpoint_0198658048.pth.tar \
        --multimaze --num_mazes_test 64
 ```
 Training:
 ```
 SIZE=9
-python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
-        --recurrent_policy --num_stack 1 --limit_actions \
-        --scenario_dir scenarios/custom_scenarios/find_return/$SIZE/train/ \
-        --test_scenario_dir scenarios/custom_scenarios/find_return/$SIZE/test/ \
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
+         --limit_actions \
+        --scenario_dir 3dcdrl/scenarios/custom_scenarios/find_return/$SIZE/train/ \
+        --test_scenario_dir 3dcdrl/scenarios/custom_scenarios/find_return/$SIZE/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
 ```
 
@@ -111,19 +111,19 @@ python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
 Evaluation:
 ```
 NUM_ITEMS=4
-python 3dcdrl/create_rollout_videos.py --recurrent_policy --num_stack 1 --limit_actions \
-       --scenario_dir  scenarios/custom_scenarios/kitem/$NUM_ITEM/test/ \
+python 3dcdrl/create_rollout_videos.py --limit_actions \
+       --scenario_dir  3dcdrl/scenarios/custom_scenarios/kitem/$NUM_ITEM/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
-       saved_models/$NUM_ITEMS\item_checkpoint_0198658048.pth.tar \
+       3dcdrl/saved_models/$NUM_ITEMS\item_checkpoint_0198658048.pth.tar \
        --multimaze --num_mazes_test 64
 ```
 Training:
 ```
 NUM_ITEMS=4
-python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
-        --recurrent_policy --num_stack 1 --limit_actions \
-        --scenario_dir scenarios/custom_scenarios/kitem/$NUM_ITEMS/train/ \
-        --test_scenario_dir scenarios/custom_scenarios/kitem/$NUM_ITEMS/test/ \
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
+        --limit_actions \
+        --scenario_dir 3dcdrl/scenarios/custom_scenarios/kitem/$NUM_ITEMS/train/ \
+        --test_scenario_dir 3dcdrl/scenarios/custom_scenarios/kitem/$NUM_ITEMS/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
 ```
 
@@ -136,20 +136,20 @@ python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
 Evaluation:
 ```
 DIFFICULTY=3
-python 3dcdrl/create_rollout_videos.py --recurrent_policy --num_stack 1 --limit_actions \
-       --scenario_dir  scenarios/custom_scenarios/two_color/$DIFFICULTY/$DIFFICULTY/test/ \
+python 3dcdrl/create_rollout_videos.py --limit_actions \
+       --scenario_dir  3dcdrl/scenarios/custom_scenarios/two_color/$DIFFICULTY/$DIFFICULTY/test/ \
        --scenario custom_scenario{:003}.cfg  --model_checkpoint \
-       saved_models/two_col_p$DIFFICULTY\_checkpoint_0198658048.pth.tar \
+       3dcdrl/saved_models/two_col_p$DIFFICULTY\_checkpoint_0198658048.pth.tar \
        --multimaze --num_mazes_test 64
 ```
 Training:
 
 ```
 DIFFICULTY=3
-python  3dcdrl/train_a2c.py --scenario custom_scenario{:003}.cfg \
-        --recurrent_policy --num_stack 1 --limit_actions \
-        --scenario_dir scenarios/custom_scenarios/two_color/$DIFFICULTY/train/ \
-        --test_scenario_dir scenarios/custom_scenarios/two_color/$DIFFICULTY/test/ \
+python  3dcdrl/train_agent.py --scenario custom_scenario{:003}.cfg \
+        --limit_actions \
+        --scenario_dir 3dcdrl/scenarios/custom_scenarios/two_color/$DIFFICULTY/train/ \
+        --test_scenario_dir 3dcdrl/scenarios/custom_scenarios/two_color/$DIFFICULTY/test/ \
         --multimaze --num_mazes_train 256 --num_mazes_test 64 --fixed_scenario
 ```
 
