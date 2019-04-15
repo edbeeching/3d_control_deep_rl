@@ -23,7 +23,7 @@ def parse_a2c_args():
     paa('--screen_width',       default=112,                       help='Width of the screen',  type=int)
     paa('--num_environments',   default=16,                        help='the number of parallel enviroments',  type=int)
     paa('--limit_actions',      default=False,                     help='limited the size of the action space to F, L, R, F+L, F+R', action='store_true')
-    paa('--scenario_dir',       default='scenarios/',           help='location of scenarios',  type=str)    
+    paa('--scenario_dir',       default='3dcdrl/scenarios/',           help='location of scenarios',  type=str)    
     paa('--test_scenario_dir',  default='',                        help='location of game scenarios',  type=str)    
     paa('--show_window',        default=False,                     help='Show the game window',  type=bool)
     paa('--resize',             default=True,                      help='Use resize for decimation rather ran downsample',  type=bool)

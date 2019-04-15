@@ -1,0 +1,57 @@
+alpha : 0.99 
+conv1_size : 16 
+conv2_size : 32 
+conv3_size : 16 
+disable_head_bob : False 
+entropy_coef : 0.001 
+eps : 1e-05 
+eval_freq : 1000 
+eval_games : 50 
+fixed_scenario : True 
+frame_skip : 4 
+gamma : 0.99 
+hidden_size : 128 
+job_id : 12345 
+learning_rate : 0.0007 
+limit_actions : True 
+log_interval : 100 
+max_grad_norm : 0.5 
+max_iters : 5000000 
+model_checkpoint :  
+model_dir :  
+model_save_rate : 1000 
+momentum : 0.0 
+multimaze : True 
+num_actions : 0 
+num_environments : 16 
+num_frames : 200000000 
+num_mazes_test : 64 
+num_mazes_train : 256 
+num_stack : 1 
+num_steps : 128 
+out_dir : ./ 
+reload_model :  
+resize : True 
+scenario : custom_scenario{:003}.cfg 
+scenario_dir : 3dcdrl/scenarios/custom_scenarios/labyrinth/9/train/ 
+screen_height : 64 
+screen_size : 320X180 
+screen_width : 112 
+show_window : False 
+simulator : doom 
+skip_eval : False 
+stoc_evals : False 
+tau : 0.95 
+test_name : test_000 
+test_scenario :  
+test_scenario_dir : scenarios/custom_scenarios/labyrinth/9/test/ 
+train_freq : 4 
+train_report_freq : 100 
+use_em_loss : False 
+use_gae : False 
+use_pipes : False 
+use_shaping : False 
+use_visdom : False 
+value_loss_coef : 0.5 
+visdom_ip : http://10.0.0.1 
+visdom_port : 8097 

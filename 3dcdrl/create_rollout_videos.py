@@ -5,74 +5,64 @@ Created on Wed Nov 21 09:19:33 2018
 
 @author: anonymous
 """
-
 import os
-from collections import deque
-
-import matplotlib.pyplot as plt
-import matplotlib.animation as manimation
-import numpy as np
 import torch
-import time
-from arguments import parse_game_args
+import numpy as np
+from arguments import parse_a2c_args
+from multi_env import MultiEnv
 from models import CNNPolicy
-from environments import DoomEnvironment
-from dummy_agent import BaseAgent
-
+from a2c_agent import A2CAgent
+from utils import initialize_logging
+from doom_environment import DoomEnvironment
+ 
 from moviepy.editor import ImageSequenceClip
 
-def make_movie(agent, env, filename, params):
+def make_movie(policy, env, filename, args):
     with torch.no_grad():
-        env.reset()
-        agent.reset()
-        
+        state = torch.zeros(1, args.hidden_size)
+        mask = torch.ones(1,1)
         obss = []  
         
         obs = env.reset().astype(np.float32)
         done = False
         while not done:
-            obss.append(obs)   
-            action, value, action_probs = agent.get_action_value_and_probs(obs, epsilon=0.0, deterministic=True)
+            obss.append(obs*2)
+            result = policy(torch.from_numpy(obs).unsqueeze(0), state, mask)
 
-            obs, reward, done, _ = env.step(action)
+            action = result['actions']
+            state = result['states']
+
+            obs, reward, done, _ = env.step(action.item())
             obs = obs.astype(np.float32)
             
     observations = [o.transpose(1,2,0) for o in obss]
-    clip = ImageSequenceClip(observations, fps=int(30/params.frame_skip))
+    clip = ImageSequenceClip(observations, fps=int(30/args.frame_skip))
     clip.write_videofile(filename)  
 
-            
 def evaluate_saved_model():  
-    params = parse_game_args()
-    
-    env = DoomEnvironment(params, is_train=True)
+    args = parse_a2c_args()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    env = DoomEnvironment(args, is_train=True)
     print(env.num_actions)
-    obs_shape = (3, params.screen_height, params.screen_width)
+    obs_shape = (3, args.screen_height, args.screen_width)
 
-    actor_critic = CNNPolicy(obs_shape[0], obs_shape, params)
+    policy = CNNPolicy(obs_shape, args).to(device)
+    checkpoint = torch.load(args.model_checkpoint, map_location=lambda storage, loc: storage) 
+    policy.load_state_dict(checkpoint['model'])
+    policy.eval()
     
-    assert params.model_checkpoint, 'No model checkpoint found'
-    assert os.path.isfile(params.model_checkpoint), 'The model could not be loaded'
+    assert args.model_checkpoint, 'No model checkpoint found'
+    assert os.path.isfile(args.model_checkpoint), 'The model could not be loaded'
     # This lambda stuff is required otherwise it will try and load on GPU
-    checkpoint = torch.load(params.model_checkpoint, map_location=lambda storage, loc: storage) 
-    actor_critic.load_state_dict(checkpoint['model'])
-    
-    base_filename = params.model_checkpoint.split('.')[0].split('/')[1]
-
-    agent = BaseAgent(actor_critic, params)
  
-    for i in range(params.num_mazes_test):
-        env = DoomEnvironment(params, idx=i, is_train=True)
-        movie_name = 'videos/{}_rollout_{:0004}.mp4'.format(base_filename, i)
+    for i in range(args.num_mazes_test):
+        env = DoomEnvironment(args, idx=i, is_train=True)
+        movie_name = 'videos/rollout_{:0004}.mp4'.format(i)
         print('Creating movie {}'.format(movie_name))
-        make_movie(agent, env, movie_name, params)
-        
-        
-        
+        make_movie(policy, env, movie_name, args)
         
         
 if __name__ == '__main__':
-    
     evaluate_saved_model()
     
     
