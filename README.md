@@ -1,5 +1,6 @@
 # 3D Control and Reasoning without a Supercomputer
-A collection of scenarios and efficient benchmarks for the ViZDoom RL environment.
+A collection of scenarios and efficient benchmarks for the ViZDoom RL environment. 
+For further details refer to the [paper](https://arxiv.org/abs/1904.01806) 
 
 This repository includes:
 * Source code for generation of custom scenarios for the ViZDoom simulator
@@ -13,8 +14,7 @@ This repository includes:
 * [Custom scenario generation](https://github.com/edbeeching/3D_Control_RL_Scenario_Benchmarks#custom-scenario-generation-1)
 * [Evaluating and training agents](https://github.com/edbeeching/3D_Control_RL_Scenario_Benchmarks#evaluating-pretrained-agents-and-training-new-ones-on-the-scenarios)
 * [FAQ](https://github.com/edbeeching/3D_Control_RL_Scenario_Benchmarks#faq)
-* [Citation TODO](https://github.com/edbeeching/3D_Control_RL_Scenario_Benchmarks#citation-1)
-* [Acknowledgements TODO](https://github.com/edbeeching/3D_Control_RL_Scenario_Benchmarks/blob/master/README.md#acknowledgements)
+* [Citation](https://github.com/edbeeching/3D_Control_RL_Scenario_Benchmarks#citation-1)
 
 ## Installation
 ### Requirements
@@ -165,11 +165,26 @@ Yes, we have made a tradeoff between increased memory usage in order to increase
 
 
 ## Citation
-Please cite the following:
-TODO upon acceptance
-
-## Acknowledgements
-TODO upon acceptance
+If you find this useful, consider citing the following:
+```
+@article{DBLP:journals/corr/abs-1904-01806,
+  author    = {Edward Beeching and
+               Christian Wolf and
+               Jilles Dibangoye and
+               Olivier Simonin},
+  title     = {Deep Reinforcement Learning on a Budget: 3D Control and Reasoning
+               Without a Supercomputer},
+  journal   = {CoRR},
+  volume    = {abs/1904.01806},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1904.01806},
+  archivePrefix = {arXiv},
+  eprint    = {1904.01806},
+  timestamp = {Sat, 27 Apr 2019 15:09:06 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1904-01806},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+```
 
 
 
