@@ -167,23 +167,14 @@ Yes, we have made a tradeoff between increased memory usage in order to increase
 ## Citation
 If you find this useful, consider citing the following:
 ```
-@article{DBLP:journals/corr/abs-1904-01806,
-  author    = {Edward Beeching and
-               Christian Wolf and
-               Jilles Dibangoye and
-               Olivier Simonin},
-  title     = {Deep Reinforcement Learning on a Budget: 3D Control and Reasoning
-               Without a Supercomputer},
-  journal   = {CoRR},
-  volume    = {abs/1904.01806},
-  year      = {2019},
-  url       = {http://arxiv.org/abs/1904.01806},
-  archivePrefix = {arXiv},
-  eprint    = {1904.01806},
-  timestamp = {Sat, 27 Apr 2019 15:09:06 +0200},
-  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1904-01806},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
+@inproceedings{beeching2020baselines,
+  title={Deep Reinforcement Learning on a Budget: 3D Control and Reasoning Without a
+    Supercomputer.
+  },
+  author={Beeching, Edward and Dibangoye, Jilles and 
+          Simonin, Olivier and Wolf, Christian}
+  booktitle={International Conference on Pattern Recognition},
+  year={2020}}
 ```
 
 
