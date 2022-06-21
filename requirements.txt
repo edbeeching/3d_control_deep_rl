@@ -7,7 +7,7 @@ imageio==2.4.1
 kiwisolver==1.0.1
 matplotlib==3.0.2
 moviepy==0.2.3.5
-numpy==1.15.4
+numpy==1.22.0
 omgifol==0.4.0
 opencv-python==3.4.3.18
 Pillow==8.1.1
